@@ -19,7 +19,7 @@
     $.ajax( {
         cache: false,
         crossDomain: true,
-        url: "//localhost:8080/RESTSecurityWithHTTPHeaderDemo/rest-api/demo-business-resource/demo-post-method/",
+        url: "//localhost:8081/RESTSecurityWithHTTPHeaderDemo/rest-api/demo-business-resource/demo-post-method/",
         type: "POST",
         success: function( jsonObj, textStatus, xhr ) {
             var htmlContent = $( "#logMsgDiv" ).html( ) + "<p style='color: red;'>If this is portion is executed, something must be wrong</p>";
@@ -42,7 +42,7 @@
             "service_key": "3b91cab8-926f-49b6-ba00-920bcf934c2a"
         },
         dataType: "json",
-        url: "//localhost:8080/RESTSecurityWithHTTPHeaderDemo/rest-api/demo-business-resource/login/",
+        url: "//localhost:8081/RESTSecurityWithHTTPHeaderDemo/rest-api/demo-business-resource/login/",
         type: "POST",
         data: {
             "username": "username2",
@@ -70,7 +70,7 @@
             "auth_token": sessionStorage.auth_token
         },
         dataType: "json",
-        url: "//localhost:8080/RESTSecurityWithHTTPHeaderDemo/rest-api/demo-business-resource/demo-get-method/",
+        url: "//localhost:8081/RESTSecurityWithHTTPHeaderDemo/rest-api/demo-business-resource/demo-get-method/",
         type: "GET",
         success: function( jsonObj, textStatus, xhr ) {
             var htmlContent = $( "#logMsgDiv" ).html( ) + "<p>After login, execute demoteGetMethod with the auth-token obtained. JSON Message: " + jsonObj.message + "</p>";
@@ -92,7 +92,7 @@
             "auth_token": sessionStorage.auth_token
         },
         dataType: "json",
-        url: "//localhost:8080/RESTSecurityWithHTTPHeaderDemo/rest-api/demo-business-resource/demo-post-method/",
+        url: "//localhost:8081/RESTSecurityWithHTTPHeaderDemo/rest-api/demo-business-resource/demo-post-method/",
         type: "POST",
         success: function( jsonObj, textStatus, xhr ) {
             var htmlContent = $( "#logMsgDiv" ).html( ) + "<p>Execute demoPostMethod with the auth-token obtained. JSON message: " + jsonObj.message + "</p>";
@@ -113,7 +113,7 @@
             "service_key": "3b91cab8-926f-49b6-ba00-920bcf934c2a",
             "auth_token": sessionStorage.auth_token
         },
-        url: "//localhost:8080/RESTSecurityWithHTTPHeaderDemo/rest-api/demo-business-resource/logout/",
+        url: "//localhost:8081/RESTSecurityWithHTTPHeaderDemo/rest-api/demo-business-resource/logout/",
         type: "POST",
         success: function( jsonObj, textStatus, xhr ) {
             var htmlContent = $( "#logMsgDiv" ).html( ) + "<p>Let's logout after all the above. No content expected.</p>";
@@ -134,7 +134,7 @@
             "service_key": "3b91cab8-926f-49b6-ba00-920bcf934c2a",
             "auth_token": sessionStorage.auth_token
         },
-        url: "//localhost:8080/RESTSecurityWithHTTPHeaderDemo/rest-api/demo-business-resource/demo-get-method/",
+        url: "//localhost:8081/RESTSecurityWithHTTPHeaderDemo/rest-api/demo-business-resource/demo-get-method/",
         type: "GET",
         success: function( jsonObj, textStatus, xhr ) {
             var htmlContent = $( "#logMsgDiv" ).html( ) + "<p style='color: red;'>If this is portion is executed, something must be wrong</p>";

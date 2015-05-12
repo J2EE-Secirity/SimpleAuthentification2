@@ -15,7 +15,7 @@
         cache: false,
         crossDomain: true,
         dataType: "json",
-        url: "http://localhost:8080/RESTCorsDemo/rest-api/rest-cors-demo/get-method/",
+        url: "http://localhost:8081/RESTCorsDemo/rest-api/rest-cors-demo/get-method/",
         type: "GET",
         success: function( jsonObj, textStatus, xhr ) {
             var htmlContent = $( "#logMsgDiv" ).html( ) + "<p>" + jsonObj.message + "</p>";
@@ -32,7 +32,7 @@
         cache: false,
         crossDomain: true,
         dataType: "json",
-        url: "http://localhost:8080/RESTCorsDemo/rest-api/rest-cors-demo/post-method/",
+        url: "http://localhost:8081/RESTCorsDemo/rest-api/rest-cors-demo/post-method/",
         type: "POST",
         success: function( jsonObj, textStatus, xhr ) {
             var htmlContent = $( "#logMsgDiv" ).html( ) + "<p>" + jsonObj.message + "</p>";
@@ -49,7 +49,7 @@
         cache: false,
         crossDomain: true,
         dataType: "json",
-        url: "http://localhost:8080/RESTCorsDemo/rest-api/rest-cors-demo/put-method/",
+        url: "http://localhost:8081/RESTCorsDemo/rest-api/rest-cors-demo/put-method/",
         type: "PUT",
         success: function( jsonObj, textStatus, xhr ) {
             var htmlContent = $( "#logMsgDiv" ).html( ) + "<p>" + jsonObj.message + "</p>";
@@ -66,7 +66,7 @@
         cache: false,
         crossDomain: true,
         dataType: "json",
-        url: "http://localhost:8080/RESTCorsDemo/rest-api/rest-cors-demo/delete-method/",
+        url: "http://localhost:8081/RESTCorsDemo/rest-api/rest-cors-demo/delete-method/",
         type: "DELETE",
         success: function( jsonObj, textStatus, xhr ) {
             var htmlContent = $( "#logMsgDiv" ).html( ) + "<p>" + jsonObj.message + "</p>";
