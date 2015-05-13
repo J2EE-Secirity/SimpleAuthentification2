@@ -3,6 +3,7 @@ package com.developerscrappad.business;
 /**
  * Created by alexandr on 12.05.15.
  */
+
 import com.developerscrappad.intf.DemoBusinessRESTResourceProxy;
 import com.developerscrappad.intf.DemoHTTPHeaderNames;
 
@@ -20,63 +21,54 @@ import java.security.GeneralSecurityException;
 
 @Stateless( name = "DemoBusinessRESTResource", mappedName = "ejb/DemoBusinessRESTResource" )
 public class DemoBusinessRESTResource implements DemoBusinessRESTResourceProxy {
-
     private static final long serialVersionUID = -6663599014192066936L;
 
     @Override
-    public Response login(
-            @Context HttpHeaders httpHeaders,
-            @FormParam( "username" ) String username,
-            @FormParam( "password" ) String password ) {
-
+    public Response login(@Context HttpHeaders httpHeaders, @FormParam("username") String username, @FormParam("password") String password){
         DemoAuthenticator demoAuthenticator = DemoAuthenticator.getInstance();
         String serviceKey = httpHeaders.getHeaderString( DemoHTTPHeaderNames.SERVICE_KEY );
 
         try {
-            String authToken = demoAuthenticator.login( serviceKey, username, password );
-
+            String                 authToken = demoAuthenticator.login(serviceKey, username, password);
             JsonObjectBuilder jsonObjBuilder = Json.createObjectBuilder();
-            jsonObjBuilder.add( "auth_token", authToken );
-            JsonObject jsonObj = jsonObjBuilder.build();
+            jsonObjBuilder.add("auth_token", authToken);
+            JsonObject               jsonObj = jsonObjBuilder.build();
 
-            return getNoCacheResponseBuilder( Response.Status.OK ).entity( jsonObj.toString() ).build();
-
-        } catch ( final LoginException ex ) {
+            return getNoCacheResponseBuilder(Response.Status.OK).entity(jsonObj.toString()).build();
+        } catch (final LoginException ex){
             JsonObjectBuilder jsonObjBuilder = Json.createObjectBuilder();
             jsonObjBuilder.add( "message", "Problem matching service key, username and password" );
-            JsonObject jsonObj = jsonObjBuilder.build();
+            JsonObject               jsonObj = jsonObjBuilder.build();
 
-            return getNoCacheResponseBuilder( Response.Status.UNAUTHORIZED ).entity( jsonObj.toString() ).build();
+            return getNoCacheResponseBuilder(Response.Status.UNAUTHORIZED).entity(jsonObj.toString()).build();
         }
     }
 
     @Override
-    public Response demoGetMethod() {
+    public Response demoGetMethod(){
         JsonObjectBuilder jsonObjBuilder = Json.createObjectBuilder();
-        jsonObjBuilder.add( "message", "Executed demoGetMethod" );
-        JsonObject jsonObj = jsonObjBuilder.build();
+        jsonObjBuilder.add("message", "Executed demoGetMethod");
+        JsonObject               jsonObj = jsonObjBuilder.build();
 
-        return getNoCacheResponseBuilder( Response.Status.OK ).entity( jsonObj.toString() ).build();
+        return getNoCacheResponseBuilder(Response.Status.OK).entity(jsonObj.toString()).build();
     }
 
     @Override
-    public Response demoPostMethod() {
+    public Response demoPostMethod(){
         JsonObjectBuilder jsonObjBuilder = Json.createObjectBuilder();
-        jsonObjBuilder.add( "message", "Executed demoPostMethod" );
-        JsonObject jsonObj = jsonObjBuilder.build();
+        jsonObjBuilder.add("message", "Executed demoPostMethod");
+        JsonObject               jsonObj = jsonObjBuilder.build();
 
-        return getNoCacheResponseBuilder( Response.Status.ACCEPTED ).entity( jsonObj.toString() ).build();
+        return getNoCacheResponseBuilder(Response.Status.ACCEPTED).entity(jsonObj.toString()).build();
     }
 
     @Override
-    public Response logout(
-            @Context HttpHeaders httpHeaders ) {
+    public Response logout(@Context HttpHeaders httpHeaders){
         try {
             DemoAuthenticator demoAuthenticator = DemoAuthenticator.getInstance();
-            String serviceKey = httpHeaders.getHeaderString( DemoHTTPHeaderNames.SERVICE_KEY );
-            String authToken = httpHeaders.getHeaderString( DemoHTTPHeaderNames.AUTH_TOKEN );
-
-            demoAuthenticator.logout( serviceKey, authToken );
+            String                   serviceKey = httpHeaders.getHeaderString(DemoHTTPHeaderNames.SERVICE_KEY);
+            String                    authToken = httpHeaders.getHeaderString(DemoHTTPHeaderNames.AUTH_TOKEN);
+            demoAuthenticator.logout(serviceKey, authToken);
 
             return getNoCacheResponseBuilder( Response.Status.NO_CONTENT ).build();
         } catch ( final GeneralSecurityException ex ) {
@@ -84,7 +76,7 @@ public class DemoBusinessRESTResource implements DemoBusinessRESTResourceProxy {
         }
     }
 
-    private Response.ResponseBuilder getNoCacheResponseBuilder( Response.Status status ) {
+    private Response.ResponseBuilder getNoCacheResponseBuilder(Response.Status status){
         CacheControl cc = new CacheControl();
         cc.setNoCache( true );
         cc.setMaxAge( -1 );

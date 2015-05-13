@@ -17,8 +17,7 @@ import java.util.logging.Logger;
 @Provider
 @PreMatching
 public class DemoRESTRequestFilter implements ContainerRequestFilter {
-
-    private final static Logger log = Logger.getLogger( DemoRESTRequestFilter.class.getName() );
+    private final static Logger log = Logger.getLogger(DemoRESTRequestFilter.class.getName());
 
     @Override
     public void filter( ContainerRequestContext requestCtx ) throws IOException {
